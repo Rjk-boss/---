@@ -34,7 +34,6 @@ def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
   if next < datetime.now():
     next = next.replace(year=next.year + 1)
-    print("这是时间>>>>>>>>>>>>>>" + next)
   return (next - today).days
 
 def get_words():
@@ -55,5 +54,6 @@ data = {"weather":{"value":wea},"temperature":{"value":temperature},"love_days":
 res = wm.send_template(user_id, template_id, data)
 res1 = wm.send_template(user_ids, template_id, data)
 
-print(res)
+
+print(">>>>>>>>>>>>>data" + data)
 print(res1)
