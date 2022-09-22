@@ -55,5 +55,5 @@ res = wm.send_template(user_id, template_id, data)
 res1 = wm.send_template(user_ids, template_id, data)
 
 
-print(">>>>>>>>>>>>>data" + data)
+print(">>>>>>>>>>>>>data" + str(data))
 print(res1)
