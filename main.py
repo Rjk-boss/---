@@ -34,6 +34,7 @@ def get_birthday():
   next = datetime.strptime(str(date.today().year) + "-" + birthday, "%Y-%m-%d")
   if next < datetime.now():
     next = next.replace(year=next.year + 1)
+    print("这是时间>>>>>>>>>>>>>>" + next)
   return (next - today).days
 
 def get_words():
