@@ -19,7 +19,7 @@ template_id = os.environ["TEMPLATE_ID"]
 
 user_ids = os.environ["USER_IDS"]
 
-user_idss = os.environ["USER_IDSS"]
+name_id = os.environ["NAME_ID"]
 
 
 def get_weather():
@@ -55,7 +55,7 @@ wea, temperature = get_weather()
 data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 res1 = wm.send_template(user_ids, template_id, data)
-res2 = wm.send_template(user_idss, template_id, data)
+res2 = wm.send_template(name_id, template_id, data)
 
 print(">>>>>>>>>>>>>data" + str(data))
 print(res1)
