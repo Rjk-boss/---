@@ -53,7 +53,7 @@ wea, temperature = get_weather()
 data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_id, template_id, data)
 res1 = wm.send_template(user_ids, template_id, data)
-
+res2 = wm.send_template(user_ids2, template_id, data)
 
 print(">>>>>>>>>>>>>data" + str(data))
 print(res1)
