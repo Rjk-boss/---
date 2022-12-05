@@ -19,7 +19,7 @@ template_id = os.environ["TEMPLATE_ID"]
 
 user_ids = os.environ["USER_IDS"]
 
-user_ids2 = os.environ["USER_IDS2"]
+user_ids2 = os.environ["USER_IDSS"]
 
 
 def get_weather():
