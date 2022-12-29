@@ -19,6 +19,8 @@ template_id = os.environ["TEMPLATE_ID"]
 
 user_ids = os.environ["USER_IDS"]
 
+user_ids2 = os.environ["USER_IDS2"]
+
 name_id = os.environ["NAME_ID"]
 
 
@@ -56,6 +58,7 @@ data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"va
 res = wm.send_template(user_id, template_id, data)
 res1 = wm.send_template(user_ids, template_id, data)
 res2 = wm.send_template(name_id, template_id, data)
+res2 = wm.send_template(user_ids2, template_id, data)
 
 print(">>>>>>>>>>>>>data" + str(data))
 print(res1)
