@@ -26,9 +26,9 @@ jobs:
       APP_ID: ${{ secrets.APP_ID }}
       APP_SECRET: ${{ secrets.APP_SECRET }}
       TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
-      USER_RJK: ${{ secrets.USER_RJK }}
-      USER_LC: ${{ secrets.USER_LC }}
-      USER_GCM: ${{ secrets.USER_GCM }}
+      RJK: ${{ secrets.USERRJK }}
+      LC: ${{ secrets.USERLC }}
+      GCM: ${{ secrets.USERGCM }}
       START_DATE: ${{ secrets.START_DATE }}
       BIRTHDAY: ${{ secrets.BIRTHDAY }}
       CITY: ${{ secrets.CITY }}
