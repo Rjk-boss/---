@@ -58,7 +58,7 @@ wm = WeChatMessage(client)
 wea, temperature = get_weather()
 data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_rjk, template_id, data)
-# res1 = wm.send_template(user_lc, template_id, data)
+res1 = wm.send_template(user_lc, template_id, data)
 res2 = wm.send_template(user_gcm, template_id, data)
 
 print(">>>>>>>>>>>>>data" + str(data))
