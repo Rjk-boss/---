@@ -6,6 +6,9 @@ import requests
 import os
 import random
 
+for k in os.environ.keys():
+    print(k)
+
 today = datetime.now()
 start_date = os.environ['START_DATE']
 city = os.environ['CITY']
