@@ -34,8 +34,10 @@ def get_weather():
 #   return weather['weather'], math.floor(weather['temp'])
     url = "http://www.weather.com.cn/data/cityinfo/101010100.html"
     res = requests.get(url).json()
+    res_str = res.decode('utf-8')
+    res_dict = json.loads(res_str)
 #     result = urllib.parse.unquote(res.decode())
-    weather = urllib.parse.unquote(res['weatherinfo'].decode())
+    weather = urllib.parse.unquote(res_dict['weatherinfo'])
     return weather['weather'], weather['temp1'];
 
 def get_count():
