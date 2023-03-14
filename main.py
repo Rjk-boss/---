@@ -33,8 +33,8 @@ def get_weather():
 #   return weather['weather'], math.floor(weather['temp'])
     url = "http://www.weather.com.cn/data/cityinfo/101010100.html"
     res = requests.get(url).json()
-    weather = res['weatherinfo']['weather']
-    return weather;
+    weather = res['weatherinfo']
+    return weather['weather'], weather['temp1'];
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
