@@ -39,7 +39,7 @@ def get_weather():
 #     result = urllib.parse.unquote(res.decode())
 #     weather = urllib.parse.unquote(res_dict['weatherinfo'])
     weather = res['weatherinfo']
-    return urllib.parse.unquote(weather['weather']), urllib.parse.unquote(weather['temp1']);
+    return urllib.parse.unquote(weather['weather'].decode()), urllib.parse.unquote(weather['temp1'].decode());
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
