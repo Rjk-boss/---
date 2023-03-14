@@ -5,6 +5,7 @@ from wechatpy.client.api import WeChatMessage, WeChatTemplate
 import requests
 import os
 import random
+import urllib.parse
 
 for k in os.environ.keys():
     print(k)
@@ -33,7 +34,8 @@ def get_weather():
 #   return weather['weather'], math.floor(weather['temp'])
     url = "http://www.weather.com.cn/data/cityinfo/101010100.html"
     res = requests.get(url).json()
-    weather = res['weatherinfo']
+    result = urllib.parse.unquote(res)
+    weather = result['weatherinfo']
     return weather['weather'], weather['temp1'];
 
 def get_count():
