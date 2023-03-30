@@ -26,6 +26,10 @@ user_lc = os.environ["LC"]
 
 user_gcm = os.environ["GCM"]
 
+user_xyq = os.environ["XYQ"]
+
+user_tcr = os.environ["TCR"]
+
 
 def get_weather():
 #   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
@@ -68,8 +72,10 @@ wm = WeChatMessage(client)
 wea, temperature = get_weather()
 data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_rjk, template_id, data)
-res1 = wm.send_template(user_lc, template_id, data)
+# res1 = wm.send_template(user_lc, template_id, data)
 res2 = wm.send_template(user_gcm, template_id, data)
+res3 = wm.send_template(user_xyq, template_id, data)
+res4 = wm.send_template(user_tcr, template_id, data)
 
 print(">>>>>>>>>>>>>data" + str(data))
 print(res1)
