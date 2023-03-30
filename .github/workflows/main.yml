@@ -29,6 +29,8 @@ jobs:
       RJK: ${{ secrets.USERRJK }}
       LC: ${{ secrets.USERLC }}
       GCM: ${{ secrets.USERGCM }}
+      XYQ: ${{ secrets.USERXYQ }}
+      TCR: ${{ secrets.USERTCR }}
       START_DATE: ${{ secrets.START_DATE }}
       BIRTHDAY: ${{ secrets.BIRTHDAY }}
       CITY: ${{ secrets.CITY }}
