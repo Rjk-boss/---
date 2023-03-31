@@ -37,7 +37,10 @@ def get_weather():
 #   weather = res['data']['list'][0]
 #   return weather['weather'], math.floor(weather['temp'])
     url = "http://www.weather.com.cn/data/cityinfo/101010100.html"
-    res = requests.get(url).json()
+    response = requests.get(url)
+    response.encoding = 'utf-8'
+    res = response.json()
+    
 #     res_str = res.decode('utf-8')
 #     res_dict = json.loads(res_str)
 #     result = urllib.parse.unquote(res.decode())
@@ -72,10 +75,10 @@ wm = WeChatMessage(client)
 wea, temperature = get_weather()
 data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}}
 res = wm.send_template(user_rjk, template_id, data)
-res1 = wm.send_template(user_lc, template_id, data)
-res2 = wm.send_template(user_gcm, template_id, data)
-res3 = wm.send_template(user_xyq, template_id, data)
-res4 = wm.send_template(user_tcr, template_id, data)
+# res1 = wm.send_template(user_lc, template_id, data)
+# res2 = wm.send_template(user_gcm, template_id, data)
+# res3 = wm.send_template(user_xyq, template_id, data)
+# res4 = wm.send_template(user_tcr, template_id, data)
 
 print(">>>>>>>>>>>>>data" + str(data))
-print(res1)
+# print(res1)
