@@ -20,6 +20,8 @@ app_secret = os.environ["APP_SECRET"]
 
 template_id = os.environ["TEMPLATE_ID"]
 
+template_id1 = os.environ["TEMPLATE_ID1"]
+
 user_rjk = os.environ["RJK"]
 
 user_lc = os.environ["LC"]
@@ -49,7 +51,7 @@ def get_weather():
 #     weather = urllib.parse.unquote(res_dict['weatherinfo'])
     weather = res['data']
     
-    return urllib.parse.unquote(weather['tq']), urllib.parse.unquote(weather['qw']), urllib.parse.unquote(weather['sd']);
+    return urllib.parse.unquote(weather['tq']), urllib.parse.unquote(weather['qw']), urllib.parse.unquote(weather['sd']), urllib.parse.unquote(weather['cityName']), urllib.parse.unquote(weather['fl']), urllib.parse.unquote(weather['fx']);
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -74,13 +76,16 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
-wea, temperature, sd = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}}
-res = wm.send_template(user_rjk, template_id, data)
-res1 = wm.send_template(user_lc, template_id, data)
-res2 = wm.send_template(user_gcm, template_id, data)
-res3 = wm.send_template(user_xyq, template_id, data)
-res4 = wm.send_template(user_tcr, template_id, data)
+wea, temperature, sd, cityName, fengli, fengxiang = get_weather()
+data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}
+
+res = wm.send_template(user_rjk, template_id1, data)
+res5 = wm.send_template(user_rjk, template_id, data)
+
+# res1 = wm.send_template(user_lc, template_id, data)
+# res2 = wm.send_template(user_gcm, template_id, data)
+# res3 = wm.send_template(user_xyq, template_id, data)
+# res4 = wm.send_template(user_tcr, template_id, data)
 
 print(">>>>>>>>>>>>>data" + str(data))
 # print(res1)
