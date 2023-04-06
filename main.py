@@ -37,6 +37,8 @@ def get_weather():
 #   weather = res['data']['list'][0]
 #   return weather['weather'], math.floor(weather['temp'])
     url = "http://www.weather.com.cn/data/cityinfo/101010100.html"
+    
+    url = "https://api.yytianqi.com/observe?city=CH040100&key=nspuws4p7em6krcl"
     response = requests.get(url)
     response.encoding = 'utf-8'
     res = response.json()
@@ -45,9 +47,9 @@ def get_weather():
 #     res_dict = json.loads(res_str)
 #     result = urllib.parse.unquote(res.decode())
 #     weather = urllib.parse.unquote(res_dict['weatherinfo'])
-    weather = res['weatherinfo']
+    weather = res['data']
     
-    return urllib.parse.unquote(weather['weather']), urllib.parse.unquote(weather['temp1']);
+    return urllib.parse.unquote(weather['tq']), urllib.parse.unquote(weather['qw']), urllib.parse.unquote(weather['sd']);
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -72,8 +74,8 @@ def get_random_color():
 client = WeChatClient(app_id, app_secret)
 
 wm = WeChatMessage(client)
-wea, temperature = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}}
+wea, temperature, sd = get_weather()
+data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":sd}
 res = wm.send_template(user_rjk, template_id, data)
 res1 = wm.send_template(user_lc, template_id, data)
 res2 = wm.send_template(user_gcm, template_id, data)
