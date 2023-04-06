@@ -80,12 +80,12 @@ wea, temperature, sd, cityName, fengli, fengxiang = get_weather()
 data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 res = wm.send_template(user_rjk, template_id1, data)
-res5 = wm.send_template(user_rjk, template_id, data)
+# res5 = wm.send_template(user_rjk, template_id, data)
 
-# res1 = wm.send_template(user_lc, template_id, data)
-# res2 = wm.send_template(user_gcm, template_id, data)
-# res3 = wm.send_template(user_xyq, template_id, data)
-# res4 = wm.send_template(user_tcr, template_id, data)
+res1 = wm.send_template(user_lc, template_id1, data)
+res2 = wm.send_template(user_gcm, template_id1, data)
+res3 = wm.send_template(user_xyq, template_id1, data)
+res4 = wm.send_template(user_tcr, template_id1, data)
 
 print(">>>>>>>>>>>>>data" + str(data))
 # print(res1)
