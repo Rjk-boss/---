@@ -33,25 +33,47 @@ user_xyq = os.environ["XYQ"]
 user_tcr = os.environ["TCR"]
 
 
-def get_weather():
-#   url = "http://autodev.openspeech.cn/csp/api/v2.1/weather?openId=aiuicus&clientType=android&sign=android&city=" + city
-#   res = requests.get(url).json()
-#   weather = res['data']['list'][0]
-#   return weather['weather'], math.floor(weather['temp'])
-    url = "http://www.weather.com.cn/data/cityinfo/101010100.html"
-    
-    url = "https://api.yytianqi.com/observe?city=CH040100&key=nspuws4p7em6krcl"
-    response = requests.get(url)
+def get_cq_weather():
+    # 重庆天气
+    url_cq = "https://api.yytianqi.com/observe?city=CH040100&key=nspuws4p7em6krcl"
+    response = requests.get(url_cq)
     response.encoding = 'utf-8'
     res = response.json()
-    
-#     res_str = res.decode('utf-8')
-#     res_dict = json.loads(res_str)
-#     result = urllib.parse.unquote(res.decode())
-#     weather = urllib.parse.unquote(res_dict['weatherinfo'])
     weather = res['data']
     
     return urllib.parse.unquote(weather['tq']), urllib.parse.unquote(weather['qw']), urllib.parse.unquote(weather['sd']), urllib.parse.unquote(weather['cityName']), urllib.parse.unquote(weather['fl']), urllib.parse.unquote(weather['fx']);
+
+def get_zj_weather():
+    # 镇江
+    url_zj = "https://api.yytianqi.com/observe?city=CH190301&key=nspuws4p7em6krcl"
+    response = requests.get(url_zj)
+    response.encoding = 'utf-8'
+    res = response.json()
+    weather = res['data']
+    
+    return urllib.parse.unquote(weather['tq']), urllib.parse.unquote(weather['qw']), urllib.parse.unquote(weather['sd']), urllib.parse.unquote(weather['cityName']), urllib.parse.unquote(weather['fl']), urllib.parse.unquote(weather['fx']);
+
+def get_xz_weather():
+    # 徐州
+    url_xz = "https://api.yytianqi.com/observe?city=CH190801&key=nspuws4p7em6krcl"
+    response = requests.get(url_xz)
+    response.encoding = 'utf-8'
+    res = response.json()
+    weather = res['data']
+    
+    return urllib.parse.unquote(weather['tq']), urllib.parse.unquote(weather['qw']), urllib.parse.unquote(weather['sd']), urllib.parse.unquote(weather['cityName']), urllib.parse.unquote(weather['fl']), urllib.parse.unquote(weather['fx']);
+
+
+def get_cs_weather():
+    # 长沙
+    url_cs = "https://api.yytianqi.com/observe?city=CH250101&key=nspuws4p7em6krcl"
+    response = requests.get(url_cs)
+    response.encoding = 'utf-8'
+    res = response.json()
+    weather = res['data']
+    
+    return urllib.parse.unquote(weather['tq']), urllib.parse.unquote(weather['qw']), urllib.parse.unquote(weather['sd']), urllib.parse.unquote(weather['cityName']), urllib.parse.unquote(weather['fl']), urllib.parse.unquote(weather['fx']);
+
 
 def get_count():
   delta = today - datetime.strptime(start_date, "%Y-%m-%d")
@@ -75,17 +97,26 @@ def get_random_color():
 
 client = WeChatClient(app_id, app_secret)
 
+# 重庆
 wm = WeChatMessage(client)
-wea, temperature, sd, cityName, fengli, fengxiang = get_weather()
-data = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+wea, temperature, sd, cityName, fengli, fengxiang = get_cq_weather()
+data_cq = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
-res = wm.send_template(user_rjk, template_id1, data)
-# res5 = wm.send_template(user_rjk, template_id, data)
+# 镇江
+wea, temperature, sd, cityName, fengli, fengxiang = get_zj_weather()
+data_zj = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
-res1 = wm.send_template(user_lc, template_id1, data)
-res2 = wm.send_template(user_gcm, template_id1, data)
-res3 = wm.send_template(user_xyq, template_id1, data)
-res4 = wm.send_template(user_tcr, template_id1, data)
+# 徐州
+wea, temperature, sd, cityName, fengli, fengxiang = get_xz_weather()
+data_xz = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
-print(">>>>>>>>>>>>>data" + str(data))
-# print(res1)
+# 长沙
+wea, temperature, sd, cityName, fengli, fengxiang = get_cs_weather()
+data_cs = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+
+res = wm.send_template(user_rjk, template_id1, data_cq)
+res1 = wm.send_template(user_lc, template_id1, data_cs)
+res2 = wm.send_template(user_gcm, template_id1, data_cq)
+res3 = wm.send_template(user_xyq, template_id1, data_zj)
+res4 = wm.send_template(user_tcr, template_id1, data_xz)
+
