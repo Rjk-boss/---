@@ -86,10 +86,11 @@ def get_count():
 #  return (next - today).days
 
 def get_words():
-  words = requests.get("https://api.shadiao.pro/chp")
+#   words = requests.get("https://api.shadiao.pro/chp")
+  words = requests.get("https://apis.tianapi.com/tiangou/index?key=a8a3b86b788884d47ec3436567ec073f")
   if words.status_code != 200:
     return get_words()
-  return words.json()['data']['text']
+  return words.json()['result']['content']
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
@@ -115,8 +116,8 @@ wea, temperature, sd, cityName, fengli, fengxiang = get_cs_weather()
 data_cs = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 res = wm.send_template(user_rjk, template_id1, data_cq)
-res1 = wm.send_template(user_lc, template_id1, data_cs)
-res2 = wm.send_template(user_gcm, template_id1, data_cq)
-res3 = wm.send_template(user_xyq, template_id1, data_zj)
-res4 = wm.send_template(user_tcr, template_id1, data_xz)
+# res1 = wm.send_template(user_lc, template_id1, data_cs)
+# res2 = wm.send_template(user_gcm, template_id1, data_cq)
+# res3 = wm.send_template(user_xyq, template_id1, data_zj)
+# res4 = wm.send_template(user_tcr, template_id1, data_xz)
 
