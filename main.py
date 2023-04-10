@@ -36,7 +36,7 @@ user_tcr = os.environ["TCR"]
 def get_cq_weather():
     # 重庆天气
     url_cq = "https://api.yytianqi.com/observe?city=CH040100&key=nspuws4p7em6krcl"
-    response = requests.get(url_cq)
+    response = requests.get(url_cq,verify=False)
     response.encoding = 'utf-8'
     res = response.json()
     weather = res['data']
@@ -46,7 +46,7 @@ def get_cq_weather():
 def get_zj_weather():
     # 镇江
     url_zj = "https://api.yytianqi.com/observe?city=CH190301&key=nspuws4p7em6krcl"
-    response = requests.get(url_zj)
+    response = requests.get(url_zj,verify=False)
     response.encoding = 'utf-8'
     res = response.json()
     weather = res['data']
@@ -56,7 +56,7 @@ def get_zj_weather():
 def get_xz_weather():
     # 徐州
     url_xz = "https://api.yytianqi.com/observe?city=CH190801&key=nspuws4p7em6krcl"
-    response = requests.get(url_xz)
+    response = requests.get(url_xz,verify=False)
     response.encoding = 'utf-8'
     res = response.json()
     weather = res['data']
@@ -67,7 +67,7 @@ def get_xz_weather():
 def get_cs_weather():
     # 长沙
     url_cs = "https://api.yytianqi.com/observe?city=CH250101&key=nspuws4p7em6krcl"
-    response = requests.get(url_cs)
+    response = requests.get(url_cs,verify=False)
     response.encoding = 'utf-8'
     res = response.json()
     weather = res['data']
