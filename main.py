@@ -87,10 +87,16 @@ def get_count():
 
 def get_words():
 #   words = requests.get("https://api.shadiao.pro/chp")
-  words = requests.get("https://apis.tianapi.com/tiangou/index?key=a8a3b86b788884d47ec3436567ec073f")
+# 舔狗文学接口
+#   words = requests.get("https://apis.tianapi.com/tiangou/index?key=a8a3b86b788884d47ec3436567ec073f")
+#     if words.status_code != 200:
+#         return get_words()
+#       return words.json()['result']['content']
+# 随机获取一句话
+  words = requests.get("https://v1.hitokoto.cn/")
   if words.status_code != 200:
     return get_words()
-  return words.json()['result']['content']
+  return words.json()['hitokoto'] + "--" + words.json()['from'] + "(" + words.json()['from_who'] + ")"
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
