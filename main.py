@@ -133,19 +133,19 @@ client = WeChatClient(app_id, app_secret)
 # 重庆
 wm = WeChatMessage(client)
 wea, temperature, sd, cityName, fengli, fengxiang = get_cq_weather()
-data_cq = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +"--" +  get_words1 + +"("+get_words2 + ")", "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+data_cq = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +'--' +  get_words1 + +'('+get_words2 + ')', "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 # 镇江
 wea, temperature, sd, cityName, fengli, fengxiang = get_zj_weather()
-data_zj = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +"--" +  get_words1 + +"("+get_words2 + ")", "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+data_zj = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +'--' +  get_words1 + +'('+get_words2 + ')', "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 # 徐州
 wea, temperature, sd, cityName, fengli, fengxiang = get_xz_weather()
-data_xz = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +"--" +  get_words1 + +"("+get_words2 + ")", "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+data_xz = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +'--' +  get_words1 + +'('+get_words2 + ')', "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 # 长沙
 wea, temperature, sd, cityName, fengli, fengxiang = get_cs_weather()
-data_cs = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +"--" +  get_words1 + +"("+get_words2 + ")", "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+data_cs = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +'--' +  get_words1 + +'('+get_words2 + ')', "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 res = wm.send_template(user_rjk, template_id1, data_cq)
 res1 = wm.send_template(user_lc, template_id1, data_cs)
