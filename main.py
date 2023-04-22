@@ -96,7 +96,7 @@ def get_words():
   words = requests.get("https://v1.hitokoto.cn/")
   if words.status_code != 200:
     return get_words()
-  return words.json()['hitokoto'] + "--" + words.json()['from'] + "(" + words.json()['from_who'] + ")"
+  return words.json()['hitokoto']
 
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
