@@ -98,6 +98,32 @@ def get_words():
     return get_words()
   return words.json()['hitokoto']
 
+def get_words1():
+#   words = requests.get("https://api.shadiao.pro/chp")
+# 舔狗文学接口
+#   words = requests.get("https://apis.tianapi.com/tiangou/index?key=a8a3b86b788884d47ec3436567ec073f")
+#     if words.status_code != 200:
+#         return get_words()
+#       return words.json()['result']['content']
+# 随机获取一句话
+  words = requests.get("https://v1.hitokoto.cn/")
+  if words.status_code != 200:
+    return get_words()
+  return words.json()['from']
+
+def get_words2():
+#   words = requests.get("https://api.shadiao.pro/chp")
+# 舔狗文学接口
+#   words = requests.get("https://apis.tianapi.com/tiangou/index?key=a8a3b86b788884d47ec3436567ec073f")
+#     if words.status_code != 200:
+#         return get_words()
+#       return words.json()['result']['content']
+# 随机获取一句话
+  words = requests.get("https://v1.hitokoto.cn/")
+  if words.status_code != 200:
+    return get_words()
+  return words.json()['from_who']
+
 def get_random_color():
   return "#%06x" % random.randint(0, 0xFFFFFF)
 
@@ -107,19 +133,19 @@ client = WeChatClient(app_id, app_secret)
 # 重庆
 wm = WeChatMessage(client)
 wea, temperature, sd, cityName, fengli, fengxiang = get_cq_weather()
-data_cq = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+data_cq = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +"--" +  get_words1 + +"("+get_words2 + ")", "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 # 镇江
 wea, temperature, sd, cityName, fengli, fengxiang = get_zj_weather()
-data_zj = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+data_zj = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +"--" +  get_words1 + +"("+get_words2 + ")", "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 # 徐州
 wea, temperature, sd, cityName, fengli, fengxiang = get_xz_weather()
-data_xz = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+data_xz = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +"--" +  get_words1 + +"("+get_words2 + ")", "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 # 长沙
 wea, temperature, sd, cityName, fengli, fengxiang = get_cs_weather()
-data_cs = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words(), "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
+data_cs = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":get_words() +"--" +  get_words1 + +"("+get_words2 + ")", "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 res = wm.send_template(user_rjk, template_id1, data_cq)
 res1 = wm.send_template(user_lc, template_id1, data_cs)
