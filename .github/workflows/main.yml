@@ -28,6 +28,7 @@ jobs:
       TEMPLATE_ID: ${{ secrets.TEMPLATE_ID }}
       TEMPLATE_ID1: ${{ secrets.TEMPLATE_ID1 }}
       TEMPLATE_ID_BAOFU: ${{ secrets.TEMPLATE_ID_BAOFU }}
+      TEMPLATE_ID_FRIEND: ${{ secrets.TEMPLATE_ID_FRIEND }}
       RJK: ${{ secrets.USERRJK }}
       LC: ${{ secrets.USERLC }}
       GCM: ${{ secrets.USERGCM }}
