@@ -24,6 +24,8 @@ template_id1 = os.environ["TEMPLATE_ID1"]
 
 template_id_baofu = os.environ["TEMPLATE_ID_BAOFU"]
 
+template_id_friend = os.environ["TEMPLATE_ID_FRIEND"]
+
 user_rjk = os.environ["RJK"]
 
 user_lc = os.environ["LC"]
@@ -152,6 +154,6 @@ data_cs = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{
 res = wm.send_template(user_rjk, template_id1, data_cq)
 res1 = wm.send_template(user_lc, template_id1, data_cs)
 res2 = wm.send_template(user_gcm, template_id1, data_cq)
-res3 = wm.send_template(user_xyq, template_id_baofu, data_zj)
-res4 = wm.send_template(user_tcr, template_id1, data_xz)
+res3 = wm.send_template(user_xyq, template_id_friend, data_zj)
+res4 = wm.send_template(user_tcr, template_id_friend, data_xz)
 
