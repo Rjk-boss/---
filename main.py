@@ -152,8 +152,9 @@ wea, temperature, sd, cityName, fengli, fengxiang = get_cs_weather()
 data_cs = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{"value":str(get_words()) +'--' +  str(get_words1())  +'('+str(get_words2()) + ')', "color":get_random_color()}, "humidity":{"value":sd}, "CITY":{"value":cityName}, "FENG":{"value":fengli},"FENGXIANG":{"value":fengxiang}}
 
 res = wm.send_template(user_rjk, template_id1, data_cq)
-res1 = wm.send_template(user_lc, template_id1, data_cs)
-res2 = wm.send_template(user_gcm, template_id1, data_cq)
-res3 = wm.send_template(user_xyq, template_id_friend, data_zj)
-res4 = wm.send_template(user_tcr, template_id_friend, data_xz)
+print(data_cq)
+# res1 = wm.send_template(user_lc, template_id1, data_cs)
+# res2 = wm.send_template(user_gcm, template_id1, data_cq)
+# res3 = wm.send_template(user_xyq, template_id_friend, data_zj)
+# res4 = wm.send_template(user_tcr, template_id_friend, data_xz)
 
