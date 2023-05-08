@@ -153,8 +153,8 @@ data_cs = {"weather":{"value":wea},"temperature":{"value":temperature},"words":{
 
 res = wm.send_template(user_rjk, template_id1, data_cq)
 print(data_cq)
-# res1 = wm.send_template(user_lc, template_id1, data_cs)
-# res2 = wm.send_template(user_gcm, template_id1, data_cq)
-# res3 = wm.send_template(user_xyq, template_id_friend, data_zj)
-# res4 = wm.send_template(user_tcr, template_id_friend, data_xz)
+res1 = wm.send_template(user_lc, template_id1, data_cs)
+res2 = wm.send_template(user_gcm, template_id1, data_cq)
+res3 = wm.send_template(user_xyq, template_id_friend, data_zj)
+res4 = wm.send_template(user_tcr, template_id_friend, data_xz)
 
